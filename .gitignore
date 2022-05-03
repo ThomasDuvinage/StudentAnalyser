@@ -1,0 +1,17 @@
+.vscode
+.DS_STORE
+
+build
+config.tests
+CMakeFiles/**
+StudentAnalyser_autogen
+*.cmake
+*.user
+CMakeCache.txt
+CMakeLists-before.txt
+.qt_for_python
+
+libs/*/*autogen
+libs/*/CMakeFiles
+libs/*/*.a
+libs/*/MakeFile
