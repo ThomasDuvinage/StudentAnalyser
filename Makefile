@@ -283,6 +283,32 @@ Logger_autogen/fast:
 	$(MAKE) -f libs/Logger/CMakeFiles/Logger_autogen.dir/build.make libs/Logger/CMakeFiles/Logger_autogen.dir/build
 .PHONY : Logger_autogen/fast
 
+#=============================================================================
+# Target rules for targets named Dataviewer
+
+# Build rule for target.
+Dataviewer: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Dataviewer
+.PHONY : Dataviewer
+
+# fast build rule for target.
+Dataviewer/fast:
+	$(MAKE) -f libs/Dataviewer/CMakeFiles/Dataviewer.dir/build.make libs/Dataviewer/CMakeFiles/Dataviewer.dir/build
+.PHONY : Dataviewer/fast
+
+#=============================================================================
+# Target rules for targets named Dataviewer_autogen
+
+# Build rule for target.
+Dataviewer_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 Dataviewer_autogen
+.PHONY : Dataviewer_autogen
+
+# fast build rule for target.
+Dataviewer_autogen/fast:
+	$(MAKE) -f libs/Dataviewer/CMakeFiles/Dataviewer_autogen.dir/build.make libs/Dataviewer/CMakeFiles/Dataviewer_autogen.dir/build
+.PHONY : Dataviewer_autogen/fast
+
 StudentAnalyser_autogen/mocs_compilation.o: StudentAnalyser_autogen/mocs_compilation.cpp.o
 
 .PHONY : StudentAnalyser_autogen/mocs_compilation.o
@@ -373,12 +399,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... Analyser_autogen"
+	@echo "... Dataviewer_autogen"
 	@echo "... FileManager_autogen"
 	@echo "... Logger_autogen"
 	@echo "... Scanner_autogen"
 	@echo "... SerialLib_autogen"
 	@echo "... StudentAnalyser_autogen"
 	@echo "... Analyser"
+	@echo "... Dataviewer"
 	@echo "... FileManager"
 	@echo "... Logger"
 	@echo "... Scanner"
