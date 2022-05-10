@@ -7,15 +7,20 @@
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkAccessManager>
 #include <QtNetwork/QNetworkReply>
+#include <QJsonDocument>
+#include <QJsonObject>
+
+#include <time.h>
 
 class Scanner : public QObject
 {
     Q_OBJECT
 public:
     Scanner();
+    ~Scanner();
 
 signals:
-    void scan(QString uid);
+    void scan(char *date, QString uid, QString login);
     void log(char *event);
 
 public slots:
@@ -26,6 +31,9 @@ public slots:
 private:
     QNetworkAccessManager *manager;
     QNetworkRequest request;
+
+    time_t strDate;
+    struct tm *timeinfo;
 
     QString url = "https://extranet1.utbm.fr/gestprod/api/cms/carte/";
     QStringList uid = {"8072E54A3A4E04",
