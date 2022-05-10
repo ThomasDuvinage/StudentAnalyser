@@ -21,6 +21,7 @@ add_subdirectory(libs/analyser)
 add_subdirectory(libs/SerialLib)
 add_subdirectory(libs/FileManager)
 add_subdirectory(libs/Logger)
+add_subdirectory(libs/Dataviewer)
 
 
 # Crée des variables avec les fichiers à compiler
@@ -70,6 +71,7 @@ target_link_libraries(StudentAnalyser PRIVATE
     SerialLib
     FileManager
     Logger
+    Dataviewer
     )
 
 target_include_directories(StudentAnalyser PRIVATE
