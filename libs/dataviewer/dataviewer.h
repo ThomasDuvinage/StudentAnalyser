@@ -2,15 +2,26 @@
 #define DATAVIEWER_H
 
 #include <QObject>
+#include <QTableView>
+#include <QItemDelegate>
+#include <QStandardItemModel>
+#include <QList>
 
 class DataViewer : public QObject
 {
     Q_OBJECT
+private:
+    QStandardItemModel *model;
+    QTableView *table;
+
 public:
-    explicit DataViewer(QObject *parent = nullptr);
+    explicit DataViewer(QTableView *table, QObject *parent = nullptr);
+    ~DataViewer();
+
+public slots:
+    void addRow(const QStringList &content);
 
 signals:
-
 };
 
 #endif // DATAVIEWER_H
