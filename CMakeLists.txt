@@ -18,10 +18,10 @@ find_package(Qt6 COMPONENTS
 
 add_subdirectory(libs/scanner)
 add_subdirectory(libs/analyser)
-add_subdirectory(libs/SerialLib)
 add_subdirectory(libs/FileManager)
 add_subdirectory(libs/Logger)
 add_subdirectory(libs/Dataviewer)
+add_subdirectory(libs/seriallib)
 
 
 # Crée des variables avec les fichiers à compiler
@@ -68,7 +68,6 @@ target_link_libraries(StudentAnalyser PRIVATE
     Qt${QT_VERSION_MAJOR}::Core
     Analyser
     Scanner
-    SerialLib
     FileManager
     Logger
     Dataviewer
