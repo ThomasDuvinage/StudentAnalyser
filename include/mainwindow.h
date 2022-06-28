@@ -7,7 +7,6 @@
 #include <filemanager.h>
 #include <logger.h>
 #include <scanner.h>
-#include <serialib.h>
 #include <dataviewer.h>
 
 #include <unistd.h>
