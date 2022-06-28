@@ -39,10 +39,12 @@ private:
     QMap<QString, studentInfos> studentsList;
 
     void saveDataToFile();
+    QStringList studentToQStringList(const studentInfos &student);
 
 public slots:
     void importFiles();
     void exportFiles();
+    void clearListing();
 
     void updateStudentStatus(char *, QString uid, QString login);
 
@@ -50,6 +52,7 @@ signals:
     void errorFile(int error);
     void log(char *log);
     void addRow(const QStringList &list);
+    void clearRows();
 };
 
 #endif // FILEMANAGER_H

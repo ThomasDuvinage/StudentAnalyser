@@ -34,15 +34,6 @@ void FileManager::importFiles()
 
                 QString student_login(infos.at(5));
 
-                QStringList student_infos_list;
-                student_infos_list << student.last_name
-                                   << student.first_name
-                                   << student.login
-                                   << student.formation
-                                   << student.level;
-
-                emit addRow(student_infos_list);
-
                 studentsList.insert(student_login, student);
             }
             else
@@ -55,6 +46,18 @@ void FileManager::importFiles()
     }
 
     emit log("FILE IMPORTED WITH SUCESS !");
+}
+
+QStringList FileManager::studentToQStringList(const studentInfos &student)
+{
+    QStringList student_infos_list;
+    student_infos_list << student.last_name
+                       << student.first_name
+                       << student.login
+                       << student.formation
+                       << student.level;
+
+    return student_infos_list;
 }
 
 void FileManager::exportFiles()
@@ -125,5 +128,13 @@ void FileManager::updateStudentStatus(char *date, QString uid, QString login)
         i.value().presence = true;
         i.value().date_scan = date;
         ++i;
+
+        emit addRow(studentToQStringList(i.value())); // add student to visualize array
     }
+}
+
+void FileManager::clearListing()
+{
+    studentsList.clear();
+    emit clearRows();
 }
