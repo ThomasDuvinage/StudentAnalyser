@@ -1,115 +1,122 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
-    <class>StudentAnalyzer</class>
-    <widget class="QMainWindow" name="StudentAnalyzer">
-        <property name="geometry">
-            <rect>
-                <x>0</x>
-                <y>0</y>
-                <width>800</width>
-                <height>600</height>
-            </rect>
-        </property>
-        <property name="windowTitle">
-            <string>StudentAnalyzer</string>
-        </property>
-        <widget class="QWidget" name="centralwidget">
-            <widget class="QWidget" name="gridLayoutWidget">
-                <property name="geometry">
-                    <rect>
-                        <x>10</x>
-                        <y>10</y>
-                        <width>781</width>
-                        <height>521</height>
-                    </rect>
-                </property>
-                <layout class="QGridLayout" name="gridLayout" rowstretch="2,1">
-                    <item row="0" column="0">
-                        <layout class="QVBoxLayout" name="verticalLayout">
-                            <property name="spacing">
-                                <number>-1</number>
-                            </property>
-                            <item>
-                                <widget class="QPushButton" name="importButton">
-                                    <property name="text">
-                                        <string>Import listing</string>
-                                    </property>
-                                </widget>
-                            </item>
-                            <item>
-                                <widget class="QPushButton" name="exportButton">
-                                    <property name="text">
-                                        <string>Export results</string>
-                                    </property>
-                                </widget>
-                            </item>
-                            <item>
-                                <widget class="QPushButton" name="startButton">
-                                    <property name="text">
-                                        <string>Start scan</string>
-                                    </property>
-                                </widget>
-                            </item>
-                            <item>
-                                <widget class="QPushButton" name="finishButton">
-                                    <property name="text">
-                                        <string>Finish scan</string>
-                                    </property>
-                                </widget>
-                            </item>
-                        </layout>
-                    </item>
-                    <item row="0" column="1">
-                        <widget class="QTableView" name="tableView" />
-                    </item>
-                    <item row="1" column="0" colspan="2">
-                        <widget class="QTextEdit" name="log_text" />
-                    </item>
-                </layout>
-            </widget>
+ <class>StudentAnalyzer</class>
+ <widget class="QMainWindow" name="StudentAnalyzer">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>StudentAnalyzer</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="gridLayoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>10</y>
+      <width>781</width>
+      <height>521</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout" rowstretch="2,1">
+     <item row="0" column="0">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <property name="spacing">
+        <number>-1</number>
+       </property>
+       <item>
+        <widget class="QPushButton" name="importButton">
+         <property name="text">
+          <string>Import listing</string>
+         </property>
         </widget>
-        <widget class="QMenuBar" name="menubar">
-            <property name="geometry">
-                <rect>
-                    <x>0</x>
-                    <y>0</y>
-                    <width>800</width>
-                    <height>24</height>
-                </rect>
-            </property>
-            <widget class="QMenu" name="menuStudentAnalyser">
-                <property name="title">
-                    <string>StudentAnalyser</string>
-                </property>
-                <addaction name="actionExit" />
-            </widget>
-            <widget class="QMenu" name="menuFiles">
-                <property name="title">
-                    <string>Files</string>
-                </property>
-                <addaction name="actionImport_students_list" />
-                <addaction name="actionExport_results" />
-            </widget>
-            <addaction name="menuStudentAnalyser" />
-            <addaction name="menuFiles" />
+       </item>
+       <item>
+        <widget class="QPushButton" name="clearListingButton">
+         <property name="text">
+          <string>Clear listing</string>
+         </property>
         </widget>
-        <widget class="QStatusBar" name="statusbar" />
-        <action name="actionExit">
-            <property name="text">
-                <string>Exit</string>
-            </property>
-        </action>
-        <action name="actionImport_students_list">
-            <property name="text">
-                <string>Import listing</string>
-            </property>
-        </action>
-        <action name="actionExport_results">
-            <property name="text">
-                <string>Export results</string>
-            </property>
-        </action>
-    </widget>
-    <resources />
-    <connections />
+       </item>
+       <item>
+        <widget class="QPushButton" name="exportButton">
+         <property name="text">
+          <string>Export results</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="startButton">
+         <property name="text">
+          <string>Start scan</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="finishButton">
+         <property name="text">
+          <string>Finish scan</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="0" column="1">
+      <widget class="QTableView" name="tableView"/>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QTextEdit" name="log_text"/>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuStudentAnalyser">
+    <property name="title">
+     <string>StudentAnalyser</string>
+    </property>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menuFiles">
+    <property name="title">
+     <string>Files</string>
+    </property>
+    <addaction name="actionImport_students_list"/>
+    <addaction name="actionExport_results"/>
+   </widget>
+   <addaction name="menuStudentAnalyser"/>
+   <addaction name="menuFiles"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
+  <action name="actionImport_students_list">
+   <property name="text">
+    <string>Import listing</string>
+   </property>
+  </action>
+  <action name="actionExport_results">
+   <property name="text">
+    <string>Export results</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
 </ui>
