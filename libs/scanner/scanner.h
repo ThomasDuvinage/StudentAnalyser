@@ -2,7 +2,6 @@
 #define SCANNER_H
 
 #include <QtCore/QObject>
-#include <QtCore/QThread>
 #include <QtCore/QDebug>
 #include <QtNetwork/QNetworkRequest>
 #include <QtNetwork/QNetworkAccessManager>
@@ -11,6 +10,8 @@
 #include <QJsonObject>
 
 #include <time.h>
+
+#include "scannerThread.h"
 
 class Scanner : public QObject
 {
@@ -27,15 +28,22 @@ public slots:
     void managerFinished();
     void manageError(QNetworkReply::NetworkError code);
     void scanning();
+    void setPort(const char *){};
+    void sendUrlRequest(char *uid);
+    void stopScan();
 
 private:
     QNetworkAccessManager *manager;
     QNetworkRequest request;
 
+    ScannerThread *scanThread;
+
     time_t strDate;
     struct tm *timeinfo;
 
     QString url = "https://extranet1.utbm.fr/gestprod/api/cms/carte/";
+
+    // TODO delete uid
     QStringList uid = {"8072E54A3A4E04",
                        "8072E54A641004",
                        "8072E54A482504",

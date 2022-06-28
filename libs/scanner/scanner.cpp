@@ -3,6 +3,9 @@
 Scanner::Scanner()
 {
     manager = new QNetworkAccessManager();
+    scanThread = new ScannerThread("/dev/cu.usbmodem143101");
+
+    connect(scanThread, SIGNAL(getUID(char *)), this, SLOT(sendUrlRequest(char *))); // send url request when an UID is received
 }
 
 Scanner::~Scanner()
@@ -10,16 +13,33 @@ Scanner::~Scanner()
     delete manager;
 }
 
+void Scanner::stopScan()
+{
+    if (scanThread->isRunning())
+    {
+        emit log("INFO | Stop scan");
+        scanThread->terminate();
+    }
+}
+
 void Scanner::scanning()
 {
-    for (const auto &item : uid)
+    if (scanThread != NULL)
     {
-        // qDebug() << url + item;
-        request.setUrl(QUrl(url + item)); // url + user_uid
-        QNetworkReply *reply = manager->get(request);
-        connect(reply, SIGNAL(finished()), this, SLOT(managerFinished()));
-        connect(reply, SIGNAL(errorOccurred(QNetworkReply::NetworkError)), this, SLOT(manageError(QNetworkReply::NetworkError)));
+        emit log("INFO | Start scan");
+        scanThread->start();
     }
+
+    else
+        printf("ERROR | scanThread not instantiated\n");
+}
+
+void Scanner::sendUrlRequest(char *uid)
+{
+    request.setUrl(QUrl(url + uid)); // url + user_uid
+    QNetworkReply *reply = manager->get(request);
+    connect(reply, SIGNAL(finished()), this, SLOT(managerFinished()));
+    connect(reply, SIGNAL(errorOccurred(QNetworkReply::NetworkError)), this, SLOT(manageError(QNetworkReply::NetworkError)));
 }
 
 void Scanner::managerFinished()
