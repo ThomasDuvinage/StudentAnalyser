@@ -20,6 +20,7 @@ public:
 
 public slots:
     void addRow(const QStringList &content);
+    void clearRows();
 
 signals:
 };

@@ -33,3 +33,8 @@ void DataViewer::addRow(const QStringList &content)
 
     model->appendRow(rowData);
 }
+
+void DataViewer::clearRows()
+{
+    model->removeRows(0, model->rowCount());
+}
