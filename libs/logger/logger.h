@@ -4,6 +4,8 @@
 #include <QObject>
 #include <QTextEdit>
 
+
+
 class Logger : public QObject
 {
     Q_OBJECT
@@ -16,8 +18,7 @@ private:
     QString spacer = " ; ";
 
 public slots:
-    void logEvent(char *event);
-
+    void logEvent( char *event);
 };
 
 #endif // LOGGER_H

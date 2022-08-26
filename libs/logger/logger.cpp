@@ -6,7 +6,8 @@ Logger::Logger(QTextEdit *log, QObject *parent) : QObject(parent)
     this->log_windows = log;
 }
 
-void Logger::logEvent(char *event){
+void Logger::logEvent(char *event)
+{
     char buffer[30];
 
     time_t strDate;
@@ -22,4 +23,24 @@ void Logger::logEvent(char *event){
 
     log_windows->append(buffer + spacer + event);
 
+    // switch (type)
+    // {
+    // case INFO:
+    //     log_windows->append(buffer + spacer + event);
+    //     break;
+
+    // case ERROR:
+    //     log_windows->setTextColor(QColor("red"));
+    //     log_windows->append(buffer + spacer + event);
+    //     log_windows->setTextColor(QColor("black"));
+    //     break;
+
+    // case DEBUG:
+    //     log_windows->setTextColor(QColor("green"));
+    //     log_windows->append(buffer + spacer + event);
+    //     log_windows->setTextColor(QColor("black"));
+    //     break;
+    // default:
+    //     break;
+    // }
 }
