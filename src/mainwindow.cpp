@@ -25,7 +25,7 @@ StudentAnalyzer::StudentAnalyzer(QWidget *parent)
     connect(analyse, SIGNAL(log(char *)), logger, SLOT(logEvent(char *)));
     connect(scanner, SIGNAL(log(char *)), logger, SLOT(logEvent(char *)));
 
-    connect(scanner, SIGNAL(scan(char *, QString, QString)), fileManager, SLOT(updateStudentStatus(char *, QString, QString)));
+    connect(scanner, SIGNAL(scan(QString, QString, QString)), fileManager, SLOT(updateStudentStatus(QString, QString, QString)));
 
     connect(fileManager, SIGNAL(addRow(const QStringList &)), dataviewer, SLOT(addRow(const QStringList &)));
     connect(fileManager, SIGNAL(clearRows()), dataviewer, SLOT(clearRows()));
