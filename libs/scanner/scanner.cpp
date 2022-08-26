@@ -3,7 +3,7 @@
 Scanner::Scanner()
 {
     manager = new QNetworkAccessManager();
-    scanThread = new ScannerThread("/dev/cu.usbmodem143101");
+    scanThread = new ScannerThread("/dev/cu.usbserial-14110");
 
     connect(scanThread, SIGNAL(getUID(char *)), this, SLOT(sendUrlRequest(char *))); // send url request when an UID is received
 }
@@ -65,9 +65,13 @@ void Scanner::managerFinished()
     time(&strDate);
     timeinfo = localtime(&strDate);
 
-    strftime(buffer, 30, "%d/%m/%y;%T", timeinfo);
+    strftime(buffer, 30, "%d/%m/%y,%T", timeinfo);
 
-    emit scan(buffer, uid, login);
+    std::string date(buffer);
+
+    QString qdate = QString::fromStdString(date);
+
+    emit scan(qdate, uid, login);
     emit log(answer.toLocal8Bit().data());
 
     reply->deleteLater();

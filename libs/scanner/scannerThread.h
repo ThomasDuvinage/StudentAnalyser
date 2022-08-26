@@ -8,18 +8,19 @@
 #define SERIAL_PORT "\\\\.\\COM1"
 #endif
 #if defined(__linux__) || defined(__APPLE__)
-//#define SERIAL_PORT "/dev/ttyS0" "/dev/cu.usbmodem143101"
-#define SERIAL_PORT "/dev/tty"
+#define SERIAL_PORT "/dev/cu.usbserial-14310"
+//#define SERIAL_PORT "/dev/tty"
 #endif
 
-#define FINAL_CHAR '\n'
+#define FINAL_CHAR ';'
 
 class ScannerThread : public QThread
 {
     Q_OBJECT
 private:
     serialib serial;
-    char *reading_string;
+    char *reading_string, *final_uid;
+
     char *port;
 
 public:

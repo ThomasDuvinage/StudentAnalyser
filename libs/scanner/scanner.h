@@ -21,7 +21,7 @@ public:
     ~Scanner();
 
 signals:
-    void scan(char *date, QString uid, QString login);
+    void scan(QString date, QString uid, QString login);
     void log(char *event);
 
 public slots:
