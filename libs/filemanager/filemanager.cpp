@@ -15,11 +15,11 @@ void FileManager::importFiles()
     while (!in.atEnd())
     {
         QString line = in.readLine();
-        QStringList infos = line.split(';');
+        QStringList infos = line.split(SEPARATOR);
 
         if (infos.first() != "Nom" && infos.first() != "NOM")
         {
-            if (infos.length() == 9)
+            if (infos.length() == 8)
             {
                 studentInfos student;
                 student.last_name = infos.at(0);
@@ -62,9 +62,12 @@ QStringList FileManager::studentToQStringList(const studentInfos &student)
 
 void FileManager::exportFiles()
 {
-    this->path_export = QFileDialog::getExistingDirectory(this, tr("Export directory"), "/home/thomasduvinage/Documents", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+    if (!studentsList.isEmpty())
+    {
+        this->path_export = QFileDialog::getExistingDirectory(this, tr("Export directory"), "/home/thomasduvinage/Documents", QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
 
-    saveDataToFile();
+        saveDataToFile();
+    }
 }
 
 void FileManager::saveDataToFile()
@@ -85,6 +88,7 @@ void FileManager::saveDataToFile()
             for (auto e : studentsList.keys())
             {
                 fout_presents.flush();
+                fout_absents.flush();
                 studentInfos s = studentsList.value(e);
                 if (studentsList.value(e).presence)
                 {
@@ -110,6 +114,7 @@ void FileManager::saveDataToFile()
                 }
             }
             file_present.close();
+            file_abs.close();
             emit log("File saved with sucess... !");
         }
         else
@@ -119,17 +124,28 @@ void FileManager::saveDataToFile()
         emit log("ERROR | Path export not set");
 }
 
-void FileManager::updateStudentStatus(char *date, QString uid, QString login)
+void FileManager::updateStudentStatus(QString date, QString uid, QString login)
 {
-    QMap<QString, studentInfos>::iterator i = studentsList.find(login);
-    while (i != studentsList.end() && i.key() == login)
+    if (studentsList.contains(login))
     {
-        i.value().uid = uid;
-        i.value().presence = true;
-        i.value().date_scan = date;
-        ++i;
+        if (!studentsList[login].presence)
+        {
+            studentsList[login].uid = uid;
+            studentsList[login].presence = true;
+            studentsList[login].date_scan = date;
 
-        emit addRow(studentToQStringList(i.value())); // add student to visualize array
+            emit addRow(studentToQStringList(studentsList[login])); // add student to visualize array
+
+            qDebug() << studentToQStringList(studentsList[login]);
+
+            emit log("Student added with success !");
+        }
+        else
+            emit log("!!! Student already scanned !!!");
+    }
+    else
+    {
+        emit log("Error while updating studentState");
     }
 }
 

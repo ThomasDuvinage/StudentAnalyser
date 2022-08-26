@@ -9,7 +9,7 @@
 #include <QDebug>
 #include <QTextStream>
 
-#define SEPARATOR ";"
+#define SEPARATOR ","
 
 struct studentInfos
 {
@@ -36,7 +36,7 @@ private:
     QString path_import;
     QString path_export;
 
-    QMap<QString, studentInfos> studentsList;
+    QMap<QString, studentInfos> studentsList; // TODO add pointer
 
     void saveDataToFile();
     QStringList studentToQStringList(const studentInfos &student);
@@ -46,7 +46,7 @@ public slots:
     void exportFiles();
     void clearListing();
 
-    void updateStudentStatus(char *, QString uid, QString login);
+    void updateStudentStatus(QString date, QString uid, QString login);
 
 signals:
     void errorFile(int error);
