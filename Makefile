@@ -206,32 +206,6 @@ Analyser_autogen/fast:
 .PHONY : Analyser_autogen/fast
 
 #=============================================================================
-# Target rules for targets named SerialLib
-
-# Build rule for target.
-SerialLib: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SerialLib
-.PHONY : SerialLib
-
-# fast build rule for target.
-SerialLib/fast:
-	$(MAKE) -f libs/SerialLib/CMakeFiles/SerialLib.dir/build.make libs/SerialLib/CMakeFiles/SerialLib.dir/build
-.PHONY : SerialLib/fast
-
-#=============================================================================
-# Target rules for targets named SerialLib_autogen
-
-# Build rule for target.
-SerialLib_autogen: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 SerialLib_autogen
-.PHONY : SerialLib_autogen
-
-# fast build rule for target.
-SerialLib_autogen/fast:
-	$(MAKE) -f libs/SerialLib/CMakeFiles/SerialLib_autogen.dir/build.make libs/SerialLib/CMakeFiles/SerialLib_autogen.dir/build
-.PHONY : SerialLib_autogen/fast
-
-#=============================================================================
 # Target rules for targets named FileManager
 
 # Build rule for target.
@@ -308,6 +282,32 @@ Dataviewer_autogen: cmake_check_build_system
 Dataviewer_autogen/fast:
 	$(MAKE) -f libs/Dataviewer/CMakeFiles/Dataviewer_autogen.dir/build.make libs/Dataviewer/CMakeFiles/Dataviewer_autogen.dir/build
 .PHONY : Dataviewer_autogen/fast
+
+#=============================================================================
+# Target rules for targets named SerialLib
+
+# Build rule for target.
+SerialLib: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SerialLib
+.PHONY : SerialLib
+
+# fast build rule for target.
+SerialLib/fast:
+	$(MAKE) -f libs/seriallib/CMakeFiles/SerialLib.dir/build.make libs/seriallib/CMakeFiles/SerialLib.dir/build
+.PHONY : SerialLib/fast
+
+#=============================================================================
+# Target rules for targets named SerialLib_autogen
+
+# Build rule for target.
+SerialLib_autogen: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 SerialLib_autogen
+.PHONY : SerialLib_autogen
+
+# fast build rule for target.
+SerialLib_autogen/fast:
+	$(MAKE) -f libs/seriallib/CMakeFiles/SerialLib_autogen.dir/build.make libs/seriallib/CMakeFiles/SerialLib_autogen.dir/build
+.PHONY : SerialLib_autogen/fast
 
 StudentAnalyser_autogen/mocs_compilation.o: StudentAnalyser_autogen/mocs_compilation.cpp.o
 
