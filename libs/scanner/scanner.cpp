@@ -3,7 +3,7 @@
 Scanner::Scanner()
 {
     manager = new QNetworkAccessManager();
-    scanThread = new ScannerThread("/dev/cu.usbserial-14110");
+    scanThread = new ScannerThread("/dev/cu.usbserial-14140");
 
     connect(scanThread, SIGNAL(getUID(char *)), this, SLOT(sendUrlRequest(char *))); // send url request when an UID is received
 }
@@ -26,8 +26,13 @@ void Scanner::scanning()
 {
     if (scanThread != NULL)
     {
-        emit log("INFO | Start scan");
-        scanThread->start();
+        if (!scanThread->isRunning())
+        {
+            emit log("INFO | Start scan");
+            scanThread->start();
+        }
+        else
+            emit log("INFO | Scan is already running");
     }
 
     else
@@ -72,7 +77,7 @@ void Scanner::managerFinished()
     QString qdate = QString::fromStdString(date);
 
     emit scan(qdate, uid, login);
-    emit log(answer.toLocal8Bit().data());
+    // emit log(answer.toLocal8Bit().data());
 
     reply->deleteLater();
 }
