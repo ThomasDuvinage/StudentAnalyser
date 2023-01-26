@@ -45,7 +45,9 @@ void loop()
 
 	for (int i = mfrc522.uid.size -1; i > 0; i--)
 	{
-		Serial.print(mfrc522.uid.uidByte[i], HEX);
+	  char buffer[3];
+	  sprintf (buffer, "%02X", mfrc522.uid.uidByte[i]);
+    Serial.print(buffer);
 	}
 
 	Serial.print(';');
