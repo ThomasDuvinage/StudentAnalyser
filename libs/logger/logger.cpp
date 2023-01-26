@@ -3,6 +3,7 @@
 
 Logger::Logger(QTextEdit *log, QObject *parent) : QObject(parent)
 {
+    log->setReadOnly(true);
     this->log_windows = log;
 }
 
