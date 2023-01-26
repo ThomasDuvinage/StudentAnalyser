@@ -8,6 +8,4 @@ int main(int argc, char *argv[])
     StudentAnalyzer w;
     w.show();
     return a.exec();
-
-    return 0;
 }
