@@ -17,3 +17,5 @@ libs/*/*.a
 libs/*/MakeFile
 
 files/*
+
+output_files/*
