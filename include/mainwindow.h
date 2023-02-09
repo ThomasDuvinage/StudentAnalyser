@@ -8,6 +8,7 @@
 #include <logger.h>
 #include <scanner.h>
 #include <dataviewer.h>
+#include <database.hpp>
 
 #include <unistd.h>
 #include <stdio.h>
@@ -32,6 +33,7 @@ public:
     Logger *logger;
     Scanner *scanner;
     DataViewer *dataviewer;
+    Database *database;
 
 private:
     Ui::StudentAnalyzer *ui;

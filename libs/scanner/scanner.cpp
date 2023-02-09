@@ -77,7 +77,8 @@ void Scanner::managerFinished()
     QString qdate = QString::fromStdString(date);
 
     emit scan(qdate, uid, login);
-    // emit log(answer.toLocal8Bit().data());
+    // 
+    emit log(answer.toLocal8Bit().data());
 
     reply->deleteLater();
 }

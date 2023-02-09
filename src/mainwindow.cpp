@@ -11,6 +11,7 @@ StudentAnalyzer::StudentAnalyzer(QWidget *parent)
     logger = new Logger(ui->log_text);
     scanner = new Scanner();
     dataviewer = new DataViewer(ui->tableView, this);
+    database = new Database();
 
     connect(ui->importButton, SIGNAL(clicked()), fileManager, SLOT(importFiles()));
     connect(ui->clearListingButton, SIGNAL(clicked()), fileManager, SLOT(clearListing()));
@@ -29,6 +30,9 @@ StudentAnalyzer::StudentAnalyzer(QWidget *parent)
 
     connect(fileManager, SIGNAL(addRow(const QStringList &)), dataviewer, SLOT(addRow(const QStringList &)));
     connect(fileManager, SIGNAL(clearRows()), dataviewer, SLOT(clearRows()));
+
+    connect(scanner, SIGNAL(scan(QString, QString, QString)), database, SLOT(addStudent(QString, QString, QString)));
+    connect(database, SIGNAL(log(char *)), logger, SLOT(logEvent(char *)));
 }
 
 StudentAnalyzer::~StudentAnalyzer()
